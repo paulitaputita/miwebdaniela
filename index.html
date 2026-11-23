@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSFiddle 4hwvuysL</title>
+
+  <style>
+    
+/* ESTILO GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #090909;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* MENÚ */
+header {
+    background-color: #050505;
+    padding: 22px 8%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid #292929;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h2 {
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+nav h2 span,
+footer h2 span {
+    color: #ed174c;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ed174c;
+}
+
+/* PORTADA */
+.hero {
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+    padding: 80px 10%;
+    background: linear-gradient(90deg, #080808 20%, #270813 100%);
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.subtitulo {
+    color: #ed174c;
+    letter-spacing: 5px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: clamp(65px, 12vw, 120px);
+    line-height: 0.95;
+    margin: 25px 0;
+    font-weight: 900;
+}
+
+.hero h1 span {
+    color: #ed174c;
+}
+
+.hero-content p {
+    color: #cccccc;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.boton {
+    display: inline-block;
+    background-color: #ed174c;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.boton:hover {
+    background-color: white;
+    color: #ed174c;
+}
+
+/* SOBRE NOSOTROS */
+.sobre {
+    padding: 90px 10%;
+}
+
+.sobre h2,
+.artistas h2,
+.contacto h2,
+.playlist h2 {
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.sobre-contenido {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.sobre-contenido img {
+    width: 45%;
+    border-radius: 8px;
+}
+
+.sobre-contenido h3 {
+    color: #ed174c;
+    margin-bottom: 20px;
+}
+
+.sobre-contenido p {
+    color: #bbbbbb;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* ARTISTAS */
+.artistas {
+    background-color: #111111;
+    padding: 90px 8%;
+}
+
+.descripcion {
+    color: #ed174c;
+    text-align: center;
+    letter-spacing: 3px;
+    margin-top: -20px;
+    margin-bottom: 40px;
+    font-size: 12px;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.tarjeta {
+    background-color: #1b1b1b;
+    padding: 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px #ed174c30;
+}
+
+.tarjeta img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.tarjeta h3 {
+    color: #ed174c;
+    margin: 18px 0 10px;
+    font-size: 23px;
+}
+
+.tarjeta p {
+    color: #bbbbbb;
+    line-height: 1.5;
+    min-height: 48px;
+    margin-bottom: 15px;
+}
+
+.tarjeta a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.tarjeta a:hover {
+    color: #ed174c;
+}
+
+/* PLAYLIST */
+.playlist {
+    text-align: center;
+    padding: 85px 20px;
+    background: linear-gradient(135deg, #300817, #090909);
+}
+
+.playlist p {
+    color: #cccccc;
+    margin-bottom: 30px;
+}
+
+/* CONTACTO */
+.contacto {
+    padding: 90px 20px;
+    text-align: center;
+}
+
+.contacto p {
+    color: #bbbbbb;
+    margin-bottom: 25px;
+}
+
+form {
+    max-width: 550px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input,
+textarea {
+    background-color: #1b1b1b;
+    color: white;
+    border: 1px solid #444;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: Arial;
+}
+
+input:focus,
+textarea:focus {
+    outline: 1px solid #ed174c;
+}
+
+button {
+    background-color: #ed174c;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #b90d38;
+}
+
+.nota {
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+/* FOOTER */
+footer {
+    background-color: #050505;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid #292929;
+}
+
+footer h2 {
+    margin-bottom: 15px;
+}
+
+footer p {
+    color: #888;
+    margin: 15px;
+    font-size: 12px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+}
+
+footer a:hover {
+    color: #ed174c;
+}
+
+/* ADAPTACIÓN A MÓVILES */
+@media (max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero {
+        min-height: 450px;
+        padding: 60px 7%;
+    }
+
+    .sobre-contenido {
+        flex-direction: column;
+    }
+
+    .sobre-contenido img {
+        width: 100%;
+    }
+
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+
+    .sobre h2,
+    .artistas h2,
+    .contacto h2,
+    .playlist h2 {
+        font-size: 27px;
+    }
+}
+
+  </style>
+
+  
+</head>
+<body>
+  
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA VENDICIÓN RECORDS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <h2>LA VENDICIÓN<span>.</span></h2>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre">Sobre nosotros</a></li>
+                <li><a href="#artistas">Artistas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- PORTADA -->
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <p class="subtitulo">INDEPENDENT MUSIC LABEL</p>
+                <h1>LA<br><span>VENDICIÓN</span></h1>
+                <p>El sonido de la calle. La libertad de crear.
+                   Una nueva forma de entender la música urbana.</p>
+                <a href="#artistas" class="boton">DESCUBRE LOS ARTISTAS</a>
+            </div>
+        </section>
+
+        <!-- SOBRE EL TEMA -->
+        <section id="sobre" class="sobre">
+            <h2>¿QUÉ ES LA VENDICIÓN?</h2>
+            <div class="sobre-contenido">
+                <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=900"
+                     alt="Artista cantando en un concierto">
+                <div>
+                    <h3>UNDERGROUND CULTURE</h3>
+                    <p>
+                        La Vendición Records es un sello discográfico independiente
+                        fundado en 2016 por Yung Beef. Se ha convertido en una
+                        referencia de la música urbana española, apostando por
+                        sonidos diferentes y artistas con personalidad propia.
+                    </p>
+                    <p>
+                        Su música mezcla estilos como el trap, rap, reguetón y
+                        otros sonidos alternativos. Su filosofía se basa en la
+                        libertad artística y en dar visibilidad a nuevos talentos.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ARTISTAS -->
+        <section id="artistas" class="artistas">
+            <h2>ARTISTAS DESTACADOS</h2>
+            <p class="descripcion">ENCUENTRA TU PRÓXIMO TEMA FAVORITO</p>
+
+            <div class="galeria">
+
+                <article class="tarjeta">
+                    <img src="https://placehold.co/600x400/171717/ffffff?text=YUNG+BEEF"
+                         alt="Yung Beef">
+                    <h3>YUNG BEEF</h3>
+                    <p>Una de las figuras más importantes del trap underground español.</p>
+                    <a href="https://open.spotify.com/search/Yung%20Beef"
+                       target="_blank" rel="noopener noreferrer">ESCUCHAR EN SPOTIFY ↗</a>
+                    <a href="https://www.youtube.com/results?search_query=Yung+Beef"
+                       target="_blank" rel="noopener noreferrer">VER EN YOUTUBE ↗</a>
+                </article>
+
+                <article class="tarjeta">
+                    <img src="https://placehold.co/600x400/171717/ffffff?text=LA+ZOWI"
+                         alt="La Zowi">
+                    <h3>LA ZOWI</h3>
+                    <p>Una artista referente del trap y la música urbana española.</p>
+                    <a href="https://open.spotify.com/search/La%20Zowi"
+                       target="_blank" rel="noopener noreferrer">ESCUCHAR EN SPOTIFY ↗</a>
+                    <a href="https://www.youtube.com/results?search_query=La+Zowi"
+                       target="_blank" rel="noopener noreferrer">VER EN YOUTUBE ↗</a>
+                </article>
+
+                <article class="tarjeta">
+                    <img src="https://placehold.co/600x400/171717/ffffff?text=KAYDY+CAIN"
+                         alt="Kaydy Cain">
+                    <h3>KAYDY CAIN</h3>
+                    <p>Conocido por su mezcla de trap, rap y reguetón.</p>
+                    <a href="https://open.spotify.com/search/Kaydy%20Cain"
+                       target="_blank" rel="noopener noreferrer">ESCUCHAR EN SPOTIFY ↗</a>
+                    <a href="https://www.youtube.com/results?search_query=Kaydy+Cain"
+                       target="_blank" rel="noopener noreferrer">VER EN YOUTUBE ↗</a>
+                </article>
+
+                <article class="tarjeta">
+                    <img src="https://placehold.co/600x400/171717/ffffff?text=KHALED"
+                         alt="Khaled">
+                    <h3>KHALED</h3>
+                    <p>Uno de los nombres vinculados a la escena urbana underground.</p>
+                    <a href="https://open.spotify.com/search/Khaled%20La%20Vendicion"
+                       target="_blank" rel="noopener noreferrer">ESCUCHAR EN SPOTIFY ↗</a>
+                    <a href="https://www.youtube.com/results?search_query=Khaled+La+Vendicion"
+                       target="_blank" rel="noopener noreferrer">VER EN YOUTUBE ↗</a>
+                </article>
+
+                <article class="tarjeta">
+                    <img src="https://placehold.co/600x400/171717/ffffff?text=SOTO+ASA"
+                         alt="Soto Asa">
+                    <h3>SOTO ASA</h3>
+                    <p>Sonidos experimentales y una identidad musical propia.</p>
+                    <a href="https://open.spotify.com/search/Soto%20Asa"
+                       target="_blank" rel="noopener noreferrer">ESCUCHAR EN SPOTIFY ↗</a>
+                    <a href="https://www.youtube.com/results?search_query=Soto+Asa"
+                       target="_blank" rel="noopener noreferrer">VER EN YOUTUBE ↗</a>
+                </article>
+
+                <article class="tarjeta">
+                    <img src="https://placehold.co/600x400/171717/ffffff?text=ALBANY"
+                         alt="Albany">
+                    <h3>ALBANY</h3>
+                    <p>Una voz destacada de la música urbana alternativa.</p>
+                    <a href="https://open.spotify.com/search/Albany"
+                       target="_blank" rel="noopener noreferrer">ESCUCHAR EN SPOTIFY ↗</a>
+                    <a href="https://www.youtube.com/results?search_query=Albany+artista"
+                       target="_blank" rel="noopener noreferrer">VER EN YOUTUBE ↗</a>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- PLAYLIST -->
+        <section class="playlist">
+            <h2>LA VENDICIÓN EN SPOTIFY</h2>
+            <p>Descubre canciones y lanzamientos del sello.</p>
+            <a class="boton" href="https://open.spotify.com/playlist/3H3HQc440rzbsv8VPQoFz1"
+               target="_blank" rel="noopener noreferrer">
+                ESCUCHAR PLAYLIST ↗
+            </a>
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contacto" class="contacto">
+            <h2>CONTACTO</h2>
+            <p>¿Tienes alguna pregunta? Escríbenos.</p>
+
+            <form>
+                <input type="text" placeholder="Tu nombre" required>
+                <input type="email" placeholder="Tu correo electrónico" required>
+                <textarea placeholder="Escribe tu mensaje..." rows="5" required></textarea>
+                <button type="submit">ENVIAR MENSAJE</button>
+            </form>
+            <p class="nota">Formulario de demostración: no envía datos reales.</p>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <h2>LA VENDICIÓN<span>.</span></h2>
+        <p>EL UNDERGROUND NUNCA MUERE.</p>
+        <div>
+            <a href="https://lavendicion.com/" target="_blank"
+               rel="noopener noreferrer">WEB OFICIAL</a>
+            <a href="https://www.instagram.com/lavendicionrecs/"
+               target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+        </div>
+        <p>© 2026 - Proyecto TIC 2º Bachillerato</p>
+    </footer>
+
+</body>
+</html>
+
+
+  <script>
+    
+  </script>
+</body>
+</html>
